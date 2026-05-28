@@ -14,7 +14,7 @@
 
     /* Theme Variables - Dark Mode (Default) */
     --bg-color: #0a0a1a;
-    --bg-gradient: radial-gradient(circle at 50% 50%, #15153a 0%, #0a0a1a 100%);
+    --bg-gradient: linear-gradient(-45deg, #050515, #0a0b25, #140d2f, #050512);
     --surface-color: rgba(255, 255, 255, 0.05);
     --surface-border: rgba(255, 255, 255, 0.1);
     --glass-blur: 20px;
@@ -41,7 +41,7 @@
 [data-theme="light"] {
     /* Theme Variables - Light Mode */
     --bg-color: #f5f5ff;
-    --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #f0f0ff 100%);
+    --bg-gradient: linear-gradient(-45deg, #f3f3ff, #e7e5ff, #e2f7f9, #faf5ff);
     --surface-color: rgba(0, 0, 0, 0.03);
     --surface-border: rgba(0, 0, 0, 0.08);
     
@@ -78,6 +78,8 @@ html {
 
 body {
     background: var(--bg-gradient);
+    background-size: 400% 400%;
+    animation: gradientBgAnim 15s ease infinite;
     color: var(--text-primary);
     font-family: var(--font-body);
     line-height: 1.6;
@@ -144,6 +146,12 @@ section {
 @keyframes gradient-shift {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
+}
+
+@keyframes gradientBgAnim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @keyframes float {
@@ -1255,6 +1263,16 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+}
+
+.certifications-grid.single-cert {
+    display: flex;
+    justify-content: center;
+}
+
+.certifications-grid.single-cert .certification-card {
+    max-width: 480px;
+    width: 100%;
 }
 
 .achievement-card {
